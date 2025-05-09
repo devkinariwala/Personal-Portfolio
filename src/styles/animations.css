@@ -1,0 +1,51 @@
+/* Typing cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Scroll reveal animation */
+.animate-reveal {
+  animation: reveal 0.8s ease forwards;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elements are initially hidden */
+section > div > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation delay for staggered reveals */
+section > div > *:nth-child(1) { transition-delay: 0.1s; }
+section > div > *:nth-child(2) { transition-delay: 0.2s; }
+section > div > *:nth-child(3) { transition-delay: 0.3s; }
+section > div > *:nth-child(4) { transition-delay: 0.4s; }
+section > div > *:nth-child(5) { transition-delay: 0.5s; }
+
+/* Show elements when they enter viewport */
+section.in-view > div > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* IntersectionObserver will add this class */
+.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
